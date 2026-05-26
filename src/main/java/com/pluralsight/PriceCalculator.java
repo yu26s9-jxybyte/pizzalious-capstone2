@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import com.pluralsight.models.Size;
+
 // central source of truth for all pricing logic.
 // all prices come directly from the requirements pricing table.
 public class PriceCalculator {

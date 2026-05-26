@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.models;
 
 // the four crust options a customer can choose from. all are the same base price.
 public enum CrustType {

@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.models;
 
 // the three available pizza (and drink) sizes.
 public enum Size {

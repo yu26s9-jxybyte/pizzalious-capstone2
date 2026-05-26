@@ -1,4 +1,6 @@
-package com.pluralsight;
+package com.pluralsight.models;
+
+import com.pluralsight.PriceCalculator;
 
 // represents a single topping on a pizza.
 // tracks how many of this topping were added (quantity) and how many extras were requested on top of that (extraQuantity).

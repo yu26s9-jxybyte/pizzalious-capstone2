@@ -1,4 +1,7 @@
-package com.pluralsight;
+package com.pluralsight.models;
+
+import com.pluralsight.IOrderItem;
+import com.pluralsight.PriceCalculator;
 
 import java.util.ArrayList;
 import java.util.List;

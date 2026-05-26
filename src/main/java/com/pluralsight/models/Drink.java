@@ -1,4 +1,7 @@
-package com.pluralsight;
+package com.pluralsight.models;
+
+import com.pluralsight.IOrderItem;
+import com.pluralsight.PriceCalculator;
 
 // customers choose a size and a flavor.
 // it also implements IOrderItem so it can live in the same order list as Pizza and GarlicKnots

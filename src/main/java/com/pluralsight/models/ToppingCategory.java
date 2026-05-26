@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.models;
 
 // determine how a topping is priced.
 // meat and cheese are premium (extra cost per size)
