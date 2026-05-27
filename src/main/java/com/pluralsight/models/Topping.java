@@ -60,8 +60,6 @@ public class Topping {
         return 0.0;
     }
 
-    // display
-
     // displays string for the order summary and receipt and shows extras if any were added
 
     public String toString() {
