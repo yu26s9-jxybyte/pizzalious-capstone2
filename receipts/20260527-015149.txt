@@ -1,0 +1,20 @@
+========================================
+         PIZZA-licious Order
+  05/27/2026 01:51:49 PM
+========================================
+
+1. Garlic Knots  $1.50
+
+2. Large Pizza - Thin crust
+  Toppings:
+    - Sausage
+    - Mozzarella
+  Sauces:
+    - Marinara
+  Price: $21.75
+
+3. Large Drink - Lemonade  $3.00
+
+----------------------------------------
+  TOTAL:  $26.25
+========================================

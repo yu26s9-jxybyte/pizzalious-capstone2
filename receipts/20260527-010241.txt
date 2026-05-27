@@ -1,0 +1,19 @@
+========================================
+         PIZZA-licious Order
+  05/27/2026 01:02:41 PM
+========================================
+
+1. Personal Pizza - Thin crust
+  Toppings:
+    - Chicken (x1 extra)
+    - Green Peppers
+    - Mozzarella
+  Sauces:
+    - Marinara
+  Price: $10.75
+
+2. Personal Drink - Lemonade  $2.00
+
+----------------------------------------
+  TOTAL:  $12.75
+========================================

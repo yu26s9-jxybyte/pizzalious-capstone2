@@ -6,38 +6,37 @@ import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// holds all items added during the session and records the time the order was created for the receipt filename.
 public class Order {
 
     private ArrayList<IOrderItem> items;
     private Date orderTime;
 
-    // formats the date for display on screen
+    // Display format for screen
     private static final SimpleDateFormat DISPLAY_FORMAT =
             new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
 
-    // formats the date for the receipt filename
+    // File format for receipt filename
     private static final SimpleDateFormat FILE_FORMAT =
             new SimpleDateFormat("yyyyMMdd-hhmmss");
 
-    // creates a new empty order and captures the current date and time.
+    // Constructor
     public Order() {
-        this.items     = new ArrayList<IOrderItem>();
+        this.items = new ArrayList<>();
         this.orderTime = new Date();
     }
 
-    // managing items
+    // ITEM MANAGEMENT
 
-    // adds any IOrderItem (Pizza, Drink, or GarlicKnots) to this order.
     public void addItem(IOrderItem item) {
         items.add(item);
     }
 
-    //getters
+    public ArrayList<IOrderItem> getItems() {
+        return items;
+    }
 
-    // returns the items in reverse order so the newest shows up first.
     public ArrayList<IOrderItem> getItemsNewestFirst() {
-        ArrayList<IOrderItem> reversed = new ArrayList<IOrderItem>();
+        ArrayList<IOrderItem> reversed = new ArrayList<>();
 
         for (int i = items.size() - 1; i >= 0; i--) {
             reversed.add(items.get(i));
@@ -46,81 +45,82 @@ public class Order {
         return reversed;
     }
 
-    //returns the items in the order they were added. used when building the receipt.
-    public ArrayList<IOrderItem> getItems() {
-        return items;
-    }
-
-    //returns true if there are no items on the order yet.
     public boolean isEmpty() {
-        return items.size() == 0;
+        return items.isEmpty();
     }
 
-    //returns the receipt filename based on the order timestamp.
-    public String getReceiptFileName() {
-        return FILE_FORMAT.format(orderTime) + ".txt";
-    }
+    // ORDER VALIDATION
 
-    //returns the order time formatted for display on screen.
-    public String getDisplayTime() {
-        return DISPLAY_FORMAT.format(orderTime);
-    }
-
-    //returns true if this order meets the minimum requirements to check out.
     public boolean isValid() {
-        boolean hasPizza        = false;
+        boolean hasPizza = false;
         boolean hasDrinkOrKnots = false;
 
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i) instanceof Pizza) {
+        for (IOrderItem item : items) {
+            if (item instanceof Pizza) {
                 hasPizza = true;
             }
-            if (items.get(i) instanceof Drink || items.get(i) instanceof GarlicKnots) {
+            if (item instanceof Drink || item instanceof GarlicKnots) {
                 hasDrinkOrKnots = true;
             }
         }
 
+        // valid if:
+        // - at least one pizza OR
+        // - at least one drink/knots
         return hasPizza || hasDrinkOrKnots;
     }
 
-    // pricing
+    // PRICING
 
-    //returns the grand total by adding up the price of every item on the order.
+
     public double getTotalPrice() {
         double total = 0;
 
-        for (int i = 0; i < items.size(); i++) {
-            total += items.get(i).getPrice();
+        for (IOrderItem item : items) {
+            total += item.getPrice();
         }
 
         return total;
     }
 
-    // display
+    // RECEIPT INFO
 
-    // builds the full order summary shown on the checkout screen and saved to the receipt
-    // lists every item with its description, then shows the grand total.
+
+    public String getReceiptFileName() {
+        return FILE_FORMAT.format(orderTime) + ".txt";
+    }
+
+    public String getDisplayTime() {
+        return DISPLAY_FORMAT.format(orderTime);
+    }
+
+
+    // ORDER SUMMARY
 
     public String getOrderSummary() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
-        result += "========================================\n";
-        result += "         PIZZA-licious Order\n";
-        result += "  " + getDisplayTime() + "\n";
-        result += "========================================\n\n";
+        result.append("========================================\n");
+        result.append("         PIZZA-licious Order\n");
+        result.append("  ").append(getDisplayTime()).append("\n");
+        result.append("========================================\n\n");
 
-        if (items.size() == 0) {
-            result += "  No items on this order.\n";
+        if (items.isEmpty()) {
+            result.append("  No items on this order.\n");
         } else {
-            for (int i = 0; i < items.size(); i++) {
-                result += (i + 1) + ". " + items.get(i).getDescription() + "\n\n";
+            int index = 1;
+            for (IOrderItem item : items) {
+                result.append(index++)
+                        .append(". ")
+                        .append(item.getDescription())
+                        .append("\n\n");
             }
         }
 
-        result += "----------------------------------------\n";
-        result += String.format("  TOTAL:  $%.2f%n", getTotalPrice());
-        result += "========================================\n";
+        result.append("----------------------------------------\n");
+        result.append(String.format("  TOTAL:  $%.2f%n", getTotalPrice()));
+        result.append("========================================\n");
 
-        return result;
+        return result.toString();
     }
 }
