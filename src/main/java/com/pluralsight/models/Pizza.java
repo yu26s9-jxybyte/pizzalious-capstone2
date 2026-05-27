@@ -4,128 +4,111 @@ import com.pluralsight.IOrderItem;
 import com.pluralsight.PriceCalculator;
 
 import java.util.ArrayList;
-import java.util.List;
 
-// represents a single customized pizza on an order.
-// holds all customer selections: size, crust, toppings, sauces, and stuffed crust.
-// implements IOrderItem so it can be added to an Order like any other item.
 public class Pizza implements IOrderItem {
 
-    private final Size size;
-    private final CrustType crustType;
+    private Size size;
+    private CrustType crustType;
     private boolean stuffedCrust;
-    private final List<Topping> toppings; // meats, cheeses, and regular toppings
-    private final List<Topping> sauces;   // sauces are tracked separately for cleaner display
+    private ArrayList<Topping> toppings; // meats, cheeses, and regular toppings
+    private ArrayList<Topping> sauces;   // kept separate for cleaner display on receipt
 
-    // creates a pizza with the given size and crust type.
-    // stuffed crust defaults to false — use setStuffedCrust() to enable it.
+    //creates a pizza with the chosen size and crust.
     public Pizza(Size size, CrustType crustType) {
         this.size         = size;
         this.crustType    = crustType;
         this.stuffedCrust = false;
-        this.toppings     = new ArrayList<>();
-        this.sauces       = new ArrayList<>();
+        this.toppings     = new ArrayList<Topping>();
+        this.sauces       = new ArrayList<Topping>();
     }
-
-    //getters
 
     //returns the size of this pizza.
     public Size getSize() {
         return size;
     }
 
-    // returns the crust type selected for this pizza.
+    //returns the crust type of this pizza
     public CrustType getCrustType() {
         return crustType;
     }
 
-    // returns true if the customer requested stuffed crust.
     public boolean isStuffedCrust() {
         return stuffedCrust;
     }
 
-    // returns the list of toppings (meats, cheeses, regular) on this pizza.
-    public List<Topping> getToppings() {
+    //returns the list of toppings
+    public ArrayList<Topping> getToppings() {
         return toppings;
     }
 
-    // returns the list of sauces selected for this pizza
-    public List<Topping> getSauces() {
+    //returns the list of sauces on this pizza. */
+    public ArrayList<Topping> getSauces() {
         return sauces;
     }
 
-    // setters
 
-    // enables or disables stuffed crust for this pizza
+    // stuffed crust for this pizza
     public void setStuffedCrust(boolean stuffedCrust) {
         this.stuffedCrust = stuffedCrust;
     }
 
-    // adding items
+    //adds a topping (meat, cheese, or regular) to this pizza.
 
-    // adds a topping (meat, cheese, or regular) to this pizza
-    // sauces should be added via addSauce() instead
     public void addTopping(Topping topping) {
         toppings.add(topping);
     }
 
-    // adds a sauce to this pizza.
-    // kept separate from toppings so the receipt can display them in distinct sections.
+    //adds a sauce to this pizza.
+
     public void addSauce(Topping sauce) {
         sauces.add(sauce);
     }
 
     // IOrderItem
 
-    // calculates the total price for this pizza.
-    // starts with the base price for the size, then adds the cost of each premium topping (meats and cheeses). Regular toppings
-    // and sauces are always free so they contribute 0.0.
+    //calculates the total price for this pizza.
+
     public double getPrice() {
         double total = PriceCalculator.pizzaBasePrice(size);
 
-        for (Topping topping : toppings) {
-            total += topping.getPriceFor(size);
+        for (int i = 0; i < toppings.size(); i++) {
+            total += toppings.get(i).getPriceFor(size);
         }
 
-        // sauces are always included, but we loop anyway in case pricing changes later
-        for (Topping sauce : sauces) {
-            total += sauce.getPriceFor(size);
+        for (int i = 0; i < sauces.size(); i++) {
+            total += sauces.get(i).getPriceFor(size);
         }
 
         return total;
     }
 
-    // returns a full multi-line description of this pizza for the order summary and receipt.
-    // lists size, crust, stuffed crust flag, each topping, and each sauce
+    // a full description of this pizza for the order summary and receipt.
     public String getDescription() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(size).append(" Pizza - ").append(crustType).append(" crust");
+        String result = size + " Pizza - " + crustType + " crust";
 
         if (stuffedCrust) {
-            sb.append(" (stuffed)");
+            result += " (stuffed)";
         }
 
-        if (!toppings.isEmpty()) {
-            sb.append("\n  Toppings:");
-            for (Topping t : toppings) {
-                sb.append("\n    - ").append(t);
+        if (toppings.size() > 0) {
+            result += "\n  Toppings:";
+            for (int i = 0; i < toppings.size(); i++) {
+                result += "\n    - " + toppings.get(i);
             }
         }
 
-        if (!sauces.isEmpty()) {
-            sb.append("\n  Sauces:");
-            for (Topping s : sauces) {
-                sb.append("\n    - ").append(s);
+        if (sauces.size() > 0) {
+            result += "\n  Sauces:";
+            for (int i = 0; i < sauces.size(); i++) {
+                result += "\n    - " + sauces.get(i);
             }
         }
 
-        sb.append(String.format("%n  Price: $%.2f", getPrice()));
+        result += String.format("%n  Price: $%.2f", getPrice());
 
-        return sb.toString();
+        return result;
     }
 
-    // delegates to getDescription() so Pizza prints cleanly wherever toString() is called.
     public String toString() {
         return getDescription();
     }
