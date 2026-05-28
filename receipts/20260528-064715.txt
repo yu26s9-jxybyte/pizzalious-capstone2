@@ -1,0 +1,18 @@
+========================================
+         PIZZA-licious Order
+  05/28/2026 06:47:15 PM
+========================================
+
+1. Signature Dessert Pizza: S'mores
+Personal Pizza - Regular crust
+  Toppings:
+    - Chocolate Chips
+    - Marshmallows
+    - Graham Cracker Crumble
+  Sauces:
+    - Chocolate Drizzle
+  Price: $8.50
+
+----------------------------------------
+  TOTAL:  $8.50
+========================================

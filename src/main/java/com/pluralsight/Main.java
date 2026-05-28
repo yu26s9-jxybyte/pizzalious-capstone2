@@ -1,6 +1,9 @@
 package com.pluralsight;
 
 import com.pluralsight.models.*;
+import com.pluralsight.models.signatures.AppleCinnamonCrumblePizza;
+import com.pluralsight.models.signatures.SmoresPizza;
+import com.pluralsight.models.signatures.StrawberryCheesecakePizza;
 
 import java.util.Scanner;
 
@@ -69,7 +72,8 @@ public class Main {
             System.out.println("1) Add Pizza");
             System.out.println("2) Add Drink");
             System.out.println("3) Add Garlic Knots");
-            System.out.println("4) Checkout");
+            System.out.println("4) Add Signature Dessert Pizza");
+            System.out.println("5) Checkout");
             System.out.println("0) Cancel Order");
             System.out.print("Choose an option: ");
 
@@ -87,6 +91,10 @@ public class Main {
                     System.out.println("Garlic knots added.");
                     break;
                 case 4:
+                    order.addItem(buildSignatureDessertPizza());
+                    System.out.println("Signature dessert pizza added!");
+                    break;
+                case 5:
                     checkout(order);
                     ordering = false;
                     break;
@@ -277,6 +285,35 @@ public class Main {
         System.out.println("Drink added!");
         return new Drink(size, flavor);
     }
+
+    // DESSERTS
+    private static Pizza buildSignatureDessertPizza() {
+        System.out.println("\nChoose a Signature Dessert Pizza:");
+        System.out.println("1) S'mores Pizza");
+        System.out.println("2) Strawberry Cheesecake Pizza");
+        System.out.println("3) Apple Cinnamon Crumble Pizza");
+        System.out.print("Choose: ");
+
+        int choice = readInt();
+
+        Size size = chooseSize();
+        CrustType crust = chooseCrust();
+
+        switch (choice) {
+            case 1:
+                return new SmoresPizza(size, crust);
+            case 2:
+                return new StrawberryCheesecakePizza(size, crust);
+            case 3:
+                return new AppleCinnamonCrumblePizza(size, crust);
+
+
+            default:
+                System.out.println("Invalid. Defaulting to S'mores.");
+                return new SmoresPizza(size, crust);
+        }
+    }
+
 
     // CHECKOUT
 

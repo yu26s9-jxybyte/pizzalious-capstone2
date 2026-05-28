@@ -1,0 +1,22 @@
+========================================
+         PIZZA-licious Order
+  05/28/2026 11:08:44 AM
+========================================
+
+1. Medium Pizza - Cauliflower crust (stuffed)
+  Toppings:
+    - Mushrooms
+    - Provolone
+    - Pepperoni
+  Sauces:
+    - BBQ
+    - Buffalo
+  Price: $15.50
+
+2. Garlic Knots  $1.50
+
+3. Large Drink - Coke  $3.00
+
+----------------------------------------
+  TOTAL:  $20.00
+========================================

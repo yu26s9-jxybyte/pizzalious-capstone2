@@ -1,0 +1,26 @@
+========================================
+         PIZZA-licious Order
+  05/28/2026 01:48:25 PM
+========================================
+
+1. Medium Pizza - Thick crust (stuffed)
+  Toppings:
+    - Chicken (x1 extra)
+    - Sausage
+    - Provolone
+    - Green Peppers
+    - Spinach
+  Sauces:
+    - BBQ
+    - Buffalo
+  Price: $18.50
+
+2. Personal Drink - Sprite  $2.00
+
+3. Garlic Knots  $1.50
+
+4. Large Drink - Iced Tea  $3.00
+
+----------------------------------------
+  TOTAL:  $25.00
+========================================
