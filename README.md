@@ -17,7 +17,8 @@ Features
 And here is the steps I took to build this project!
 
 Built a UML Diagram to help me build. 
-[Pizza-lious UML Diagram.pdf](https://github.com/user-attachments/files/28232684/Pizza-lious.UML.Diagram.pdf)
+<img width="1551" height="979" alt="image" src="https://github.com/user-attachments/assets/ca1cd128-2980-4319-bd15-6e84670e1163" />
+
 
 Project Board (User Stories) 
 - As a staff member, I can start a new order so that I can take a customer's order
