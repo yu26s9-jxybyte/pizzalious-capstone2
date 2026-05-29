@@ -1,0 +1,31 @@
+========================================
+         PIZZA-licious Order
+  05/29/2026 08:48:09 AM
+========================================
+
+1. Medium Pizza - Cauliflower crust (stuffed)
+  Toppings:
+    - Chicken (x3 extra)
+    - Mozzarella
+    - Green Peppers
+  Sauces:
+    - BBQ
+  Price: $18.50
+
+2. Medium Drink - Lemonade  $2.50
+
+3. Garlic Knots  $1.50
+
+4. Signature Dessert Pizza: Strawberry Cheesecake
+Personal Pizza - Regular crust
+  Toppings:
+    - Strawberries
+    - Cream Cheese Dollops
+    - Graham Cracker Crust Bits
+  Sauces:
+    - Strawberry Glaze
+  Price: $9.25
+
+----------------------------------------
+  TOTAL:  $31.75
+========================================
